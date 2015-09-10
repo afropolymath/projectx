@@ -4,6 +4,7 @@ var rename = require('gulp-rename');
 var del = require('del');
 var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
+var bower = require('gulp-bower');
 
 gulp.task('sass', function() {
   return gulp.src('dev/scss/app.scss')
@@ -31,4 +32,12 @@ gulp.task('test', function() {
 
 });
 
-gulp.task('default', ['nodemon', 'watch']);
+gulp.task('bower', function() {
+  return bower();
+});
+
+gulp.task('default', ['build', 'watch', 'nodemon']);
+
+gulp.task('run::production', ['build', 'serve']);
+
+gulp.task('build', ['sass']);
