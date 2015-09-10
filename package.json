@@ -1,0 +1,28 @@
+{
+  "name": "projectx",
+  "version": "1.0.0",
+  "description": "Project X",
+  "main": "server.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "del": "^2.0.1",
+    "error-handler": "^1.0.0",
+    "express": "^4.13.3",
+    "firebase": "^2.2.9",
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.6.11",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.0",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
+    "uglify": "^0.1.5"
+  },
+  "author": "Chidiebere I. Nnadi",
+  "license": "MIT"
+}
