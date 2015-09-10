@@ -4,6 +4,7 @@
   "description": "Project X",
   "main": "server.js",
   "scripts": {
+    "start": "gulp",
     "test": "gulp test"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "jade": "^1.11.0",
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
+    "passport": "^0.3.0",
     "uglify": "^0.1.5"
   },
   "author": "Chidiebere I. Nnadi",
