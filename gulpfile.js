@@ -27,4 +27,8 @@ gulp.task('nodemon', function () {
   });
 });
 
+gulp.task('test', function() {
+
+});
+
 gulp.task('default', ['nodemon', 'watch']);
