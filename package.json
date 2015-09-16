@@ -29,6 +29,6 @@
   "author": "Chidiebere I. Nnadi",
   "license": "MIT",
   "engines": {
-    "iojs": "1.0.x"
+    "iojs": "*"
   }
 }
