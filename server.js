@@ -26,14 +26,15 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/registerTransaction', function(req, res) {
-  transactionId = root.child('transactions');
-  snapId = root.child('messages').push(req.query, function(err) {
-    if(!err) {
-      // parse message
-    }
-  });
-})
+app.get('/registertransaction', function(req, res) {
+  // transactionId = root.child('transactions');
+  // snapId = root.child('messages').push(req.query, function(err) {
+  //   if(!err) {
+  //     // parse message
+  //   }
+  // });
+  res.json({'status': 'Done'});
+});
 
 var server = app.listen(process.env.PORT || 3000, function() {
   var host = server.address().address;
