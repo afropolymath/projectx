@@ -24,7 +24,7 @@ gulp.task('nodemon', function () {
     env: { 'NODE_ENV': 'development' }
   })
   .on('restart', function () {
-    console.log('Server restarted!')
+    console.log('Server restarted!');
   });
 });
 
