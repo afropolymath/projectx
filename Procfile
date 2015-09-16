@@ -1,1 +1,1 @@
-web: gulp run::production
+web: sh bin/start

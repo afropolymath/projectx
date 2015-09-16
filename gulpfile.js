@@ -38,6 +38,4 @@ gulp.task('bower', function() {
 
 gulp.task('default', ['build', 'watch', 'nodemon']);
 
-gulp.task('run::production', ['build', 'nodemon']);
-
 gulp.task('build', ['sass']);
