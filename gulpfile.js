@@ -5,6 +5,7 @@ var del = require('del');
 var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
 var bower = require('gulp-bower');
+var babel = require("gulp-babel");
 
 gulp.task('sass', function() {
   return gulp.src('dev/scss/app.scss')
@@ -32,10 +33,17 @@ gulp.task('test', function() {
 
 });
 
+gulp.task('es5ify', function() {
+  return gulp.src("server-es6.js")
+    .pipe(babel())
+    .pipe(rename('server.js'))
+    .pipe(gulp.dest("./"));
+});
+
 gulp.task('bower', function() {
   return bower();
 });
 
 gulp.task('default', ['build', 'watch', 'nodemon']);
 
-gulp.task('build', ['sass']);
+gulp.task('build', ['es5ify', 'sass']);
