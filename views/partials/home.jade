@@ -1,0 +1,25 @@
+.page-header.flex.row-layout.vertical-center
+  h1.fill-layout Transaction
+  a.button(ui-sref="create-transaction") Add Transaction
+.flex-table
+  .header.flex.row-layout
+    .fill-layout Transaction Description
+    .fixed-size Status
+    .fixed-size Date
+  .row.flex.column-layout(ng-repeat="transaction in transactions")
+    .flex.row-layout
+      .fill-layout
+        span.pointer ▶
+        a(href="#") {{ transaction.description }} ({{ transaction.name }})
+      .fixed-size
+        span.status(ng-class="{'confirmed': transaction.status, 'declined': !transaction.status}") {{ transaction.status ? 'Confirmed' : 'Not confirmed' }}
+      .fixed-size
+        | {{ transaction.date | date }}
+        em(ng-if="!transaction.date") No date set
+    .flex.row-layout(ng-if="transaction.history")
+      .fill-layout
+        ul.transaction-list
+          li(ng-repeat="history in transaction.history")
+            span.px-icons ›
+            | {{ history.depositor }} - Payment of {{ history.amount }} @ {{ history.bank | uppercase }}
+

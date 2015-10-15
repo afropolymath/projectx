@@ -1,0 +1,14 @@
+.page-header.flex.row-layout.vertical-center
+  h1.fill-layout Create Transaction
+form.span-third(ng-submit="create()")
+  .form-group
+    label Person
+    input(type="text" ng-model="transaction.name")
+  .form-group
+    label Description
+    textarea(ng-model="transaction.description")
+  .form-group
+    label Amount
+    input(type="text" ng-model="transaction.amount")
+  .form-group
+    input.button(type="submit" value="Create Transaction")

@@ -1,0 +1,29 @@
+@mixin full-width-control {
+  display: block;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+  }
+  input[type="text"] {
+    @include full-width-control;
+    border: solid 1px #dedede;
+    padding: 10px;
+    font-size: 0.9em;
+    border-radius: $rounding;
+  }
+  textarea {
+    @include full-width-control;
+    border: solid 1px #dedede;
+    padding: 10px;
+    font-size: 0.9em;
+    border-radius: $rounding;
+    resize: none;
+    min-height: 200px;
+  }
+}

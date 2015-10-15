@@ -4,6 +4,8 @@ $begin-again: #A7AB2E;
 $mr-susan: #F2AF11;
 $rounding: 3px;
 
+@import 'forms';
+
 body {
   font-family: "Lato", Arial, sans-serif;
   background: #efefef;
@@ -115,6 +117,9 @@ header {
           padding: 0 30px;
           color: white;
           text-decoration: none;
+          i {
+            margin-right: 10px;
+          }
         }
         &:first-child {
           border-top: none;
@@ -156,6 +161,8 @@ header {
   font-weight: 700;
   text-decoration: none;
   border-radius: $rounding;
+  cursor: pointer;
+  border: none;
 }
 
 .flex-table {
@@ -198,4 +205,29 @@ header {
     border: solid 1px $mr-susan;
     color: $mr-susan;
   }
+}
+
+.px-icons {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.transaction-list {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  li {
+    background: #efefef;
+    list-style: none;
+    height: 45px;
+    line-height: 45px;
+    border: solid 1px #dedede;
+    padding: 0 10px;
+    margin-bottom: 7px;
+    border-radius: $rounding;
+  }
+}
+
+.span-third {
+  width: 33%;
 }

@@ -38,7 +38,13 @@ app.get('/registertransaction', function (req, res) {
   //     // parse message
   //   }
   // });
+  // Message format
   if (req.query && !_.isEmpty(req.query)) {
+    message = req.query.text;
+    // compare message to message format
+    // extract valuable information
+    // search the transactions table based on that
+    // add message where necessary
     rootRef.child('messages').push(req.query, function (err) {
       res.json(req.query);
     });
@@ -46,6 +52,10 @@ app.get('/registertransaction', function (req, res) {
     res.json({ 'status': 'Invalid Request' });
   }
 });
+
+var messageParser = function messageParser(message) {
+  var valid = false;
+};
 
 var server = app.listen(process.env.PORT || 3000, function () {
   var host = server.address().address;
