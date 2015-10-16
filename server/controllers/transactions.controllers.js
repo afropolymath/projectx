@@ -11,43 +11,48 @@ module.exports = (root) => {
       root.child('transactions').once('value',
         snap => {
           let transactions = snap.val();
-          if(req.query && !_.isEmpty(req.query)) {
-            let payload = req.query;
-            let mId = root.child('messages').push();
-            mId.set(payload, 
-              err => {
-                if(err)
-                  res.json({'status': 'An error occured'});
-                
-                parseMessage(payload.msisdn, payload.text,
-                  decoupled => {
-                    if(decoupled) {
-                      let status = false;
-                      _.forEach(transactions,
-                        (transaction, id) => {
-                          let amount = sanitizeNumber(decoupled.amount);
-                          let diff = Math.abs(transaction.amount - amount); 
-                          if(compare(transaction.name, decoupled.depositor) && diff < 100) {
-                            decoupled.mId = mId.toString();
-                            decoupled.date = Date.now();
-                            root.child('transactions').child(id).child('history').push(decoupled, function(err) {
-                              if(err)
-                                res.json({'status': 'An error occured'});
-                              res.json({'status': 'Success'});
-                            });
-                          }
-                        }
-                      );
-                    } else {
-                      res.json({'status': 'Does not require my attention'});
-                    } 
-                  }
-                );
-              }
-            );
-          } else {
+          
+          if(!req.query || _.isEmpty(req.query)) {
             res.json({'status': 'Invalid Request'});
           }
+
+          let payload = req.query;
+          let mId = root.child('messages').push();
+          mId.set(payload, 
+            err => {
+              if(err)
+                res.json({'status': 'An error occured'});
+              
+              parseMessage(payload.msisdn, payload.text,
+                decoupled => {
+                  if(!decoupled) {
+                    res.json({'status': 'Does not require my attention'});
+                  }
+                  
+                  let status = false;
+                  
+                  _.forEach(transactions,
+                    (transaction, id) => {
+                      let amount = sanitizeNumber(decoupled.amount);
+                      let diff = Math.abs(transaction.amount - amount); 
+                      
+                      if(compare(transaction.name, decoupled.depositor) && diff < 100) {
+                        decoupled.mId = mId.toString();
+                        decoupled.date = Date.now();
+                        root.child('transactions').child(id).child('history').push(decoupled, function(err) {
+                          if(err)
+                            res.json({'status': 'An error occured'});
+                          res.json({'status': 'Success'});
+                        });
+                      } else {
+                        res.json({'status': 'Might not require my attention'});
+                      }
+                    }
+                  ); 
+                }
+              );
+            }
+          );
         }
       );
     }
