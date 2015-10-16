@@ -44,6 +44,6 @@
   "author": "Chidiebere I. Nnadi",
   "license": "MIT",
   "engines": {
-    "iojs": "*"
+    "node": "4.1.1"
   }
 }

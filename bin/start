@@ -1,2 +1,2 @@
 gulp build
-node server.js
+node server-es6.js
