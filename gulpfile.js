@@ -98,4 +98,4 @@ gulp.task('bower', function() {
 
 gulp.task('default', ['build', 'watch', 'nodemon']);
 
-gulp.task('build', ['jade', 'sass', 'browserify']);
+gulp.task('build', ['bower', 'jade', 'sass', 'browserify']);
