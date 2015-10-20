@@ -1,5 +1,12 @@
 .page-header.flex.row-layout.vertical-center
   h1.fill-layout Create Transaction
+.flex.row-layout
+  .breadcrumb.fill-layout
+    ul
+      li
+        a(ui-sref="home")
+          i.mdi.mdi-chevron-left
+          | Go back
 form.span-third(ng-submit="create()")
   .form-group
     label Person

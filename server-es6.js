@@ -30,8 +30,8 @@ app.get('/*', (req, res) => {
   res.render('index');
 });
 
-let server = app.listen(process.env.PORT || 3000, () => {
-  let host = server.address().address;
-  let port = server.address().port;
+var server = app.listen(process.env.PORT || 3000, () => {
+  var host = server.address().address;
+  var port = server.address().port;
   console.log("Express server listening on port " + port);
 });

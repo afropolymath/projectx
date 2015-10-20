@@ -59,9 +59,13 @@ header {
   height: 74px;
   flex-shrink: 0;
   .logo {
-    width: 200px;
+    height: 40px;
     color: #fff;
     font-size: 1.5em;
+    img {
+      height: 40px;
+      width: auto;
+    }
   }
   nav {
     align-items: center;
@@ -186,11 +190,15 @@ header {
     a {
       color: $blue-blush;
       text-decoration: none;
+      cursor: pointer;
     }
   }
 
   .pointer {
-    margin-right: 15px;
+    margin-right: 10px;
+    &.rotated i {
+      transform: rotate(90deg)
+    }
   }
 }
 
@@ -209,25 +217,84 @@ header {
 
 .px-icons {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
+  font-size: 1.0em;
+  color: #999;
+  i.mdi-check {
+    color: $blue-blush;
+  }
 }
 
 .transaction-list {
   margin-top: 20px;
   margin-bottom: 10px;
-  padding-left: 30px;
+  padding-left: 0;
   li {
     background: #efefef;
     list-style: none;
-    height: 45px;
-    line-height: 45px;
+    height: 40px;
+    font-size: 0.9em;
+    line-height: 40px;
     border: solid 1px #dedede;
     padding: 0 10px;
     margin-bottom: 7px;
     border-radius: $rounding;
+    .actions {
+      margin-left: 20px;
+      display: none;
+      a {
+        padding: 5px 7px;
+        background: $blue-blush;
+        color: #fff;
+        margin-right: 5px;
+        border-radius: $rounding;
+        &.danger {
+          background: #CD1419;
+        }
+      }
+    }
+    &:hover .actions {
+      display: inline-block;
+    }
   }
 }
 
 .span-third {
   width: 33%;
+}
+
+.breadcrumb {
+  background: #dedede;
+  margin-bottom: 40px;
+  border-radius: $rounding;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    li {
+      font-size: 0.9em;
+      line-height: 40px;
+      padding: 0 15px;
+      a {
+        color: #006699;
+        text-decoration: none;
+        i {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.empty {
+  background: #FFF5CA;
+  font-size: 0.9em;
+  padding: 15px;
+  border: solid 1px #FFE167;
+  border-radius: $rounding;
+  &.small {
+    padding: 10px;
+    margin-top: 25px;
+  }
 }
