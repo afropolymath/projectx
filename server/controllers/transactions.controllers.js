@@ -78,7 +78,7 @@ module.exports = (root) => {
   };
 };
 
-// Refactor to load formats from database
+// TODO: Refactor to load from database
 const FORMATS = {
   diamond: {
     sender: 'DIAMOND',
@@ -93,26 +93,21 @@ const FORMATS = {
 const ASYNC_COMPLETE = 4;
 
 const compare = (phraseA, phraseB) => {
-  // Reorder the phrases to follow alphabetical order for optimal search
   phraseA = tokenizer.tokenize(phraseA).sort().join(" ");
   phraseB = tokenizer.tokenize(phraseB).sort().join(" ");
-  
-  // Compare both phrases using to get p between 0 and 1
+
   var p = natural.JaroWinklerDistance(phraseA, phraseB);
   console.log(phraseA, phraseB, p);
-  // Require p > 0.8 to succeed
+
   return p > 0.8 ? true : false;
 };
 
 const parseMessage = (sender, message, complete) => {
   async.eachObject(FORMATS,
     (bank, id, next) => {
-      // Ensure the sender you got is the sender being expected
       if(bank.sender.toLowerCase() === sender.toLowerCase()) {
-        // Run messages against regular expression
         var res = bank.pattern.exec(message);
         if(res) {
-          // Return some information about the message you found
           var result = {
             data: {
               depositor: res[2],
